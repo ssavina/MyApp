@@ -16,7 +16,7 @@ public class Fab extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_fab);
         final Intent intent = new Intent(Fab.this, MainActivity.class);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);

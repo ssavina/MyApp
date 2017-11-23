@@ -4,6 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.savina.myapp"
+        applicationId "com.example.savina.floatbutton"
         minSdkVersion 17
         targetSdkVersion 26
         versionCode 1

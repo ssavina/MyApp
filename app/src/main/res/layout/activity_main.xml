@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.savina.myapp.Fab">
+    tools:context="com.example.savina.myapp.MainActivity">
 
     <Button
         android:id="@+id/button2"
@@ -24,9 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_finger"
-        tools:layout_editor_absoluteX="262dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="246dp" />
+
+    <include
+        layout="@layout/activity_fab"/>
+
 
 
 </android.support.constraint.ConstraintLayout>

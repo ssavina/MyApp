@@ -31,17 +31,17 @@ public class MainActivity extends AppCompatActivity {
 
             fab_star.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Camera fab click. Replace with your action", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Star fab click. Replace with your action", Toast.LENGTH_SHORT).show();
                 }
             });
             fab_add.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Camera fab click. Replace with your action", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Add fab click. Replace with your action", Toast.LENGTH_SHORT).show();
                 }
             });
             fab_loc.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Camera fab click. Replace with your action", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Loc fab click. Replace with your action", Toast.LENGTH_SHORT).show();
                 }
             });
 

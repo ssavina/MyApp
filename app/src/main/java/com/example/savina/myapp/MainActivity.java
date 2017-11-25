@@ -17,12 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
 
-        Button button =  findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intent1);
-            }
-        });
+
 
             floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
             fab_star = (FloatingActionButton)findViewById(R.id.fab_star);
@@ -41,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
             });
             fab_loc.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Loc fab click. Replace with your action", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Lets see the map", Toast.LENGTH_SHORT).show();
+                    startActivity(intent1);
                 }
             });
 

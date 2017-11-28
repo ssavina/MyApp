@@ -44,5 +44,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(MyCountry));
         mMap.setMyLocationEnabled(true);
+
+        // Add a marker from DB and move the camera
+        LatLng ant = new LatLng(38.3205907,21.7715222);
+        mMap.addMarker(new MarkerOptions().position(ant).title("ant"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ant));
+
+
     }
 }

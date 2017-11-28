@@ -39,17 +39,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in yourCountry and move the camera
         LatLng MyCountry = new LatLng(0, 0);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(MyCountry));
         mMap.setMyLocationEnabled(true);
 
+
         // Add a marker from DB and move the camera
-        LatLng ant = new LatLng(38.3205907,21.7715222);
+        LatLng ant = new LatLng(38.3315147,21.7640125);
         mMap.addMarker(new MarkerOptions().position(ant).title("ant"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(ant));
 
 
+        // Add a marker from DB and move the camera
+        LatLng ant2 = new LatLng(38.3315683,21.7647648);
+        mMap.addMarker(new MarkerOptions().position(ant2).title("ant2"));
+        
     }
 }

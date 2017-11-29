@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             });
             fab_loc.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Lets see the map", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Lets see the map", Toast.LENGTH_SHORT).show();
                     new getMarkersBackground().execute();
                 }
             });

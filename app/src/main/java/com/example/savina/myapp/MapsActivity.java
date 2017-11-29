@@ -56,31 +56,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         try {
             Object obj = parser.parse(jsonString);
             JSONArray array = (JSONArray) obj;
-            JSONObject marker = (JSONObject)array.get(1);
-            Double latd, lond;
-            JSONObject obj2 = (JSONObject)array.get(1);
-            latd = Double.parseDouble((String) obj2.get("lat"));
-            lond = Double.parseDouble((String) obj2.get("lon"));
-            LatLng ant = new LatLng(latd,lond);
-            mMap.addMarker(new MarkerOptions().position(ant).title("dsa")); // TODO: add var for name like latd...
 
-            //String my = (String) array.get(1);
-            //Toast.makeText(getApplicationContext(), my, Toast.LENGTH_SHORT).show();
-            //System.out.println(array.get(1));
+            for(int x = 0; x < array.size(); x = x + 1) {
+                JSONObject marker = (JSONObject)array.get(x);
+                Double latd, lond;
+                String name;
+                name = (String) marker.get("name");
+                latd = Double.parseDouble((String) marker.get("lat"));
+                lond = Double.parseDouble((String) marker.get("lon"));
+                LatLng ant = new LatLng(latd,lond);
+                mMap.addMarker(new MarkerOptions().position(ant).title(name));
+            }
+
+            Toast.makeText(getApplicationContext(), "Markers Created", Toast.LENGTH_SHORT).show();
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
+        
         LatLng MyCountry = new LatLng(0, 0);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(MyCountry));
         //mMap.setMyLocationEnabled(true);
-
-        // Add a marker from DB and move the camera
-        //LatLng ant = new LatLng(latd,lond);
-        //mMap.addMarker(new MarkerOptions().position(ant).title(name));
 
     }
 }

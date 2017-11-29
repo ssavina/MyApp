@@ -8,16 +8,37 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
+    String id = "";
+    String name = "";
+    String lat = "";
+    String lon = "";
     FloatingActionButton floatingActionButton,fab_add , fab_star , fab_loc;
     boolean anhien= false;
+
+    private class getMarkersBackground extends asyncTaskConnect {
+        @Override
+        protected void onPostExecute(String result) {
+
+            if (result.equals("Error!")) {
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Getting Markers", Toast.LENGTH_SHORT).show();
+
+                final Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
+                intent1.putExtra("result", result);
+                startActivity(intent1);
+
+            }
+
+        }
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
-
-
 
             floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
             fab_star = (FloatingActionButton)findViewById(R.id.fab_star);
@@ -37,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             fab_loc.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this, "Lets see the map", Toast.LENGTH_SHORT).show();
-                    startActivity(intent1);
+                    new getMarkersBackground().execute();
                 }
             });
 

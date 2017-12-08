@@ -1,6 +1,8 @@
 package com.example.savina.myapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ import java.util.Iterator;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    public static final String PREFS = "myPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         Intent intent = getIntent();
+
+        SharedPreferences myPrefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        int Radius = myPrefs.getInt("Radius", 200);
+        Toast.makeText(getApplicationContext(), Integer.toString(Radius), Toast.LENGTH_SHORT).show();
 
         String jsonString = intent.getStringExtra("result");
         JSONParser parser = new JSONParser();

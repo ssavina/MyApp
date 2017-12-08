@@ -1,6 +1,8 @@
 package com.example.savina.myapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +13,15 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+
+    //public static final String PREFS = "myPrefs";
+
     String id = "";
     String name = "";
     String lat = "";
     String lon = "";
+    //int defaultRadius = 200;
+
     FloatingActionButton floatingActionButton,fab_add , fab_star , fab_loc;
     boolean anhien= false;
 
@@ -48,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             fab_star.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this, "Star fab click. Replace with your action", Toast.LENGTH_SHORT).show();
+                    Intent s = new Intent(MainActivity.this, SettingsActivity.class);
+                    startActivity(s);
                 }
             });
             fab_add.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
+        //SharedPreferences myPrefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        //SharedPreferences.Editor editor = myPrefs.edit();
+        //editor.putInt("Radius", defaultRadius);
+        //editor.commit();
         }
 
     private void Hien(){

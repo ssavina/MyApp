@@ -1,7 +1,9 @@
 package com.example.savina.myapp;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -9,6 +11,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONException;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
+
+import java.util.Iterator;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -38,25 +48,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Intent intent = getIntent();
 
+        String jsonString = intent.getStringExtra("result");
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(jsonString);
+            JSONArray array = (JSONArray) obj;
+
+            for(int x = 0; x < array.size(); x = x + 1) {
+                JSONObject marker = (JSONObject)array.get(x);
+                Double latd, lond;
+                String name;
+                name = (String) marker.get("name");
+                latd = Double.parseDouble((String) marker.get("lat"));
+                lond = Double.parseDouble((String) marker.get("lon"));
+                LatLng ant = new LatLng(latd,lond);
+                mMap.addMarker(new MarkerOptions().position(ant).title(name));
+            }
+
+            Toast.makeText(getApplicationContext(), "Markers Created", Toast.LENGTH_SHORT).show();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
         LatLng MyCountry = new LatLng(0, 0);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(MyCountry));
-        mMap.setMyLocationEnabled(true);
-
-
-        // Add a marker from DB and move the camera
-        LatLng ant = new LatLng(38.3315147,21.7640125);
-        mMap.addMarker(new MarkerOptions().position(ant).title("ant"));
-
-
-        // Add a marker from DB and move the camera
-        LatLng ant2 = new LatLng(38.3315683,21.7647648);
-        mMap.addMarker(new MarkerOptions().position(ant2).title("ant2"));
-
-        // Add a marker from DB and move the camera
-        LatLng ant3 = new LatLng(38.3316806,21.764556);
-        mMap.addMarker(new MarkerOptions().position(ant3).title("ant3"));
+        //mMap.setMyLocationEnabled(true);
 
     }
 }

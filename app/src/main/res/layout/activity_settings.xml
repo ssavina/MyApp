@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context="com.example.savina.myapp.SettingsActivity">
 
+    <LinearLayout
+        android:layout_width="343dp"
+        android:layout_height="141dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Radius" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progress="50" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

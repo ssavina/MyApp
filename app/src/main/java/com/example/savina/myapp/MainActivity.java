@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             fab_star.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Star fab click. Replace with your action", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Star fab click. Replace with your action", Toast.LENGTH_SHORT).show();
                     Intent s = new Intent(MainActivity.this, SettingsActivity.class);
                     startActivity(s);
                 }
